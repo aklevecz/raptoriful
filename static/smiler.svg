@@ -1,0 +1,51 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+    y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35;" xml:space="preserve">
+    <style type="text/css">
+  .st0 {
+    fill: black;
+    stroke: white;
+    stroke-width: 1.47;
+    stroke-miterlimit: 14;
+  }
+
+  .st1 {
+    fill: hsl(19, 100%, 51%);
+    stroke: rgb(90, 255, 90);
+    filter: hue-rotate(180deg);
+  }
+
+  #left {
+    animation: eyeBlink 2500ms infinite linear alternate;
+    transform-origin: 9px 15.9px;
+  }
+
+  #right {
+    animation-delay: 500ms;
+    animation: eyeBlink 5s infinite ease-out alternate;
+    transform-origin: 25.4px 15.9px;
+  }
+
+  @keyframes eyeBlink {
+    0% {
+      transform: scale(1);
+      fill: #4dff00;
+    stroke: rgb(255, 0, 0);
+    }
+    50% {
+      transform: scale(1.5);
+      filter: hue-rotate(180deg);
+    }
+    100% {
+      transform: scale(1);
+      filter: hue-rotate(360deg);
+      fill:rgb(255, 0, 204);
+      stroke:hsl(19, 100%, 51%)
+    }
+  }
+
+    </style>
+    <ellipse class="st0" cx="17.5" cy="17.5" rx="16.8" ry="15.4" />
+    <circle id="left" class="st1" cx="9" cy="15.9" r="2.5" />
+    <circle id="right" class="st1" cx="25.4" cy="15.9" r="2.5" />
+    <path class="st0" d="M6.9,21.7c0,0,2.6,7.5,10.6,7.5S28,21.7,28,21.7" />
+</svg>

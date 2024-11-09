@@ -1,0 +1,29 @@
+npx wrangler d1 execute DATABASE \
+--local --command "DROP TABLE raptor_rsvps"
+
+npx wrangler d1 execute DATABASE \
+--local --command "DROP TABLE raptors"
+
+npx wrangler d1 execute DATABASE \
+  --local --command "CREATE TABLE IF NOT EXISTS raptor_rsvps (phone_number TEXT, event_name TEXT, PRIMARY KEY(phone_number, event_name));"
+
+npx wrangler d1 execute DATABASE \
+  --local --command "CREATE TABLE IF NOT EXISTS raptors (phone_number TEXT PRIMARY KEY, color TEXT);"
+
+
+MIGRATION
+
+  npx wrangler d1 execute DATABASE \
+  --remote --command "CREATE TABLE IF NOT EXISTS temp_raptor_rsvps AS SELECT * FROM raptor_rsvps;"
+
+npx wrangler d1 execute DATABASE \
+  --remote --command "DROP TABLE raptor_rsvps;"
+
+npx wrangler d1 execute DATABASE \
+  --remote --command "CREATE TABLE IF NOT EXISTS raptor_rsvps (phone_number TEXT, event_name TEXT, PRIMARY KEY(phone_number, event_name));"
+
+npx wrangler d1 execute DATABASE \
+  --remote --command "INSERT INTO raptor_rsvps (phone_number, event_name) SELECT phone_number, event_name FROM temp_raptor_rsvps;"
+
+npx wrangler d1 execute DATABASE \
+  --remote --command "DROP TABLE temp_raptor_rsvps;"
