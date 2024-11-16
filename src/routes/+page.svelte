@@ -1,11 +1,11 @@
 <script>
 	import AuthFlow from '$lib/components/auth-flow.svelte';
 	import GeneratorSection from '$lib/components/containers/generator-section.svelte';
+	import Header from '$lib/components/hero/header.svelte';
 	import Raptor from '$lib/components/raptor.svelte';
 	import auth from '$lib/stores/auth.svelte';
 	import events from '$lib/stores/events';
 	import rsvp from '$lib/stores/rsvp.svelte';
-	import { formatDate } from '$lib/utils';
 	import { onMount } from 'svelte';
 
 	/** @type {{data:import('./$types').PageData}} */
@@ -50,12 +50,10 @@
 
 <div class="container">
 	<div class="header-info">
-		<h1 style="text-transform:capitalize;">{event.name}</h1>
-		<h3>{event.location}</h3>
-		<h3>{formatDate(new Date(event.date))}</h3>
+		<Header event={event} />	
 		<div class="header-info-desc">
-			<div>Bao would like to invite you to join in on his dreams.</div>
-			<div>comes with free drinks, snacks, pizza, & of course The Bao himself 🐶</div>
+			<div style="margin-bottom:.5rem;">Bao would like you to help him dream</div>
+			<div>Free drinks, snacks, pizza, & of course The Bao himself 🐶</div>
 		</div>
 		<div class="header-info-featuring"></div>
 		<video
@@ -70,9 +68,7 @@
 
 		<!-- <div style="display:flex;justify-content:center;"><Raptor size={200} /></div> -->
 		<div class="rsvp-section">
-			{#if rsvp.state[event.name]?.status === 'rsvped'}
-				<h3 style="color:var(--purple);">You are RSVPed!</h3>
-			{/if}
+
 			<h3>{event.noun} RSVPed</h3>
 			<div class="raptor-container">
 				{#each rsvpList as raptor}
@@ -101,6 +97,7 @@
 			{#if auth.state.authorized}
 				<div class="rsvp-button-container">
 					{#if isRSVPed}
+					<h3 style="color:var(--purple);">You are RSVPed!</h3>
 						<button class="btn cancel" onclick={() => rsvp.unRSVP(event.name)}>
 							{#if rsvp.fetching}...{:else}unRSVP{/if}</button
 						>
@@ -150,12 +147,13 @@
 	}
 
 	.header-info-desc {
-		margin-top: 1rem;
+		margin-top: 1rem;    padding: 0 0.6rem;
 	}
 
 	.header-info-featuring {
 		margin-top: 0.75rem;
 	}
+
 
 	@media (min-width: 768px) {
 		.container {
@@ -199,7 +197,7 @@
 	}
 	.cancel {
 		background-color: var(--red);
-		margin-top: 2rem;
+		margin-top: .5rem;
 	}
 	.auth-wrapper {
 		position: fixed;

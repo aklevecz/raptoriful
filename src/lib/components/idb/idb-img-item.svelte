@@ -1,13 +1,16 @@
 <script>
 	import modelStorage from '$lib/idb';
-	import favorite from '$lib/stores/favorite.svelte';
 	import generate from '$lib/stores/generate.svelte';
 	import raptorSvelte from '$lib/stores/raptor.svelte';
 	import { createThumbnail } from '$lib/utils';
 	import { onMount } from 'svelte';
+	import HeartIcon from '../icons/heart-icon.svelte';
+	import Modal from '../modal.svelte';
 
 	/** @type {{imgObject: Omit<GeneratedImgEntry, "base64Url">}}*/
 	let { imgObject } = $props();
+
+  let showModal = $state(false);
 
 	let imgEl = $state();
 
@@ -70,17 +73,26 @@
 	}
 
 	async function onDelete() {
+    showModal = true;
+    return;
 		await modelStorage.delete('generatedImgs', imgObject.id);
 		generate.refreshAllGeneratedImgs();
 	}
+
+  let isFavorite = $derived(raptorSvelte.state.favoriteBao === imgObject.id);
 </script>
 
 <div class:favorite={raptorSvelte.state.favoriteBao === imgObject.id} class="generated-img-item">
 	<img bind:this={imgEl} alt="Generated" />
 	<!-- <div>{imgObject.prompt}</div> -->
-	<button class="btn" onclick={onFavorite}>Favorite</button>
-	<button class="btn" onclick={onDelete}>Delete</button>
-	<button class="btn" onclick={onUpload}>Upload</button>
+	<button class="btn_icon" onclick={onFavorite}><HeartIcon active={isFavorite}/></button>
+	<button class="btn_icon" onclick={onDelete}><img style="width:24px;" src="/icons/trash-icon.svg" alt="Delete" /></button>
+	<!-- <button class="btn" onclick={onUpload}>Upload</button> -->
+   <Modal title="Delete image" bind:showModal={showModal}>
+    <div style="margin:1rem 0;word-break:auto-phrase;">Are you sure you want to delete this image?</div>
+    <button class="btn" onclick={() => showModal = false}>Cancel</button>
+    <button class="btn neg" onclick={onDelete}>Delete</button>
+   </Modal>
 </div>
 
 <style>
@@ -88,11 +100,9 @@
 		flex: 0 0 45%;
 		word-break: break-all;
 		box-sizing: border-box;
-		background-color: black;
-		padding: 1rem;
 	}
 	.favorite {
-		background-color: red;
+		background-color: #82c9a091;
 	}
 	img {
 		width: 100%;

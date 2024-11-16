@@ -5,8 +5,8 @@
 
 </script>
 <div class="container">
-    <h1>Make your own Bao dream</h1>
-    <div style="margin-bottom:1rem;">Generate your own Bao dream and see it come to life at the show!</div>
+    <h2>Make your own Bao dream</h2>
+    <div style="margin-bottom:1rem;">Generate your own Bao dreams and pick your favorite to show offk!</div>
     <BasicGenerator />
     {#if generate.state.cachedImgs.length}
         <h2>Your Baos</h2>

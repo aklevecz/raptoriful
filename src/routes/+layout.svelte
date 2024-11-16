@@ -31,9 +31,9 @@
 <style>
 	:root {
 		--red: #ff4a4a;
-		--primary-color: #000;
+		--primary-color: #1B365D;
 		--secondary-color: #fff;
-		--accent-color: #dcf02c;
+		--accent-color: #95b2c5;
 		--purple: #965cff;
 	}
 	/* .noto-sans-<> {
@@ -72,5 +72,12 @@
 		font-size: 24px;
 		padding: 16px 32px;
 		/* width: 220px; */
+	}
+	:global(button.btn_icon) {
+		background: none;
+		border: none;
+	}
+	:global(button.btn.neg) {
+		background-color: var(--red);
 	}
 </style>

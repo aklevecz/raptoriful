@@ -1,0 +1,32 @@
+<script>
+	let { active = false, dim=20} = $props();
+</script>
+
+<svg
+	id="Layer_2"
+	data-name="Layer 2"
+	xmlns="http://www.w3.org/2000/svg"
+	width={dim}
+	height={dim}
+	viewBox="0 0 163.45 145.32"
+>
+	<g id="Layer_1-2" data-name="Layer 1">
+		<path
+            class:active={active}
+			d="M42.45,3.03c16.56-1.21,28.24,7.25,39.38,18.52,9.68-9.76,18.92-17.42,33.12-18.52,30.88-2.39,54.35,29.9,42.43,58.36-7.64,18.24-55.2,58.67-71.52,76.08-.67.71-3.27,4.98-3.57,4.93L13.81,73.93C-9.69,47.88,7.08,5.63,42.45,3.03Z"
+			stroke="none"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			stroke-width="5.82"
+		/>
+	</g>
+</svg>
+
+<style>
+    path {
+        fill: #fff;
+    }
+    path.active {
+        fill: var(--red);
+    }
+</style>
