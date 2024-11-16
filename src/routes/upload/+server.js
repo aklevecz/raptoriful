@@ -21,14 +21,17 @@ export async function POST({ request, platform, cookies }) {
 		const formData = await request.formData();
         const id = formData.get('id');
 		const imageFile = formData.get('image');
-		const thumbnailFile = formData.get('thumbnail');
+		// const thumbnailBlob = formData.get('thumbnailBlob');
+        const thumbnailBase64 = formData.get('thumbnailBase64');
 		const prompt = formData.get('prompt')?.toString().trim();
 
         await platform?.env.BAO_GEN.put(`${phoneNumber}:favorite:b3`, id);
+        const thumbnailKey = `${phoneNumber}:favorite:b3:base64`
+        await platform?.env.BAO_GEN.put(thumbnailKey, thumbnailBase64);
 
 		// Validate image
 		if (!imageFile || !(imageFile instanceof Blob)) {
-			throw new Error('No image provided');
+			throw new Error('No image provided');   
 		}
 
 		// Validate image type
@@ -64,17 +67,17 @@ export async function POST({ request, platform, cookies }) {
 					type: 'full'
 				}
 			}),
-			platform.env.STORAGE.put(`${filename}_thumb.png`, thumbnailFile, {
-				httpMetadata: {
-					contentType: 'image/png',
-					cacheControl: 'public, max-age=31536000'
-				},
-				customMetadata: {
-					prompt: prompt || '',
-					uploadedAt: new Date().toISOString(),
-					type: 'thumbnail'
-				}
-			})
+			// platform.env.STORAGE.put(`${filename}_thumb.png`, thumbnailFile, {
+			// 	httpMetadata: {
+			// 		contentType: 'image/png',
+			// 		cacheControl: 'public, max-age=31536000'
+			// 	},
+			// 	customMetadata: {
+			// 		prompt: prompt || '',
+			// 		uploadedAt: new Date().toISOString(),
+			// 		type: 'thumbnail'
+			// 	}
+			// })
 		]);
 
 		// Log successful upload

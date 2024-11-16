@@ -86,7 +86,7 @@
 					{/if}
 					{#if event.name === 'bao3'}
 						<div>
-							<img src={`img?id=${raptor.phone_number}_thumb`} alt="Generated" />
+							<img onerror={function(){this.src = '/smiler.svg';this.style.width='50px'}} src={`img?id=${raptor.phone_number}_thumb`} alt="Generated" />
 						</div>
 					{/if}
 				{/each}
@@ -143,6 +143,8 @@
 	}
 
 	.header-info {
+		min-width: 340px;
+		margin-top:8px;
 		margin-bottom: 1rem;
 	}
 

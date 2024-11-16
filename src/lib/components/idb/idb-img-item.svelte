@@ -27,17 +27,17 @@
 
 			// Create a new blob with explicit content type
 			const imageBlob = new Blob([blob], { type: 'image/png' });
-			const thumbnailBlob = await createThumbnail(imageBlob);
-
+			const thumbnailBase64 = await createThumbnail(imageBlob);
 			const formData = new FormData();
       formData.append('id', imgObject.id);
 			formData.append('image', imageBlob, `${imgObject.id}.png`);
-			formData.append('thumbnail', thumbnailBlob, `${imgObject.id}_thumb.png`);
+			// formData.append('thumbnailBlob', thumbnailBob, `${imgObject.id}_thumb.png`);
+			formData.append('thumbnailBase64', thumbnailBase64);
 			formData.append('prompt', imgObject.prompt);
 
 			console.log('Upload sizes:', {
 				original: imageBlob.size,
-				thumbnail: thumbnailBlob.size
+				// thumbnail: thumbnailBlob.size
 			});
 
 			// Debug log

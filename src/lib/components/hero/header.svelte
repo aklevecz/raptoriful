@@ -7,7 +7,7 @@
 
 <div class="header_wrapper">
 	<h1 style="text-transform:capitalize;">{event.name}</h1>
-	<h3 style="text-align:center; padding-right:.5rem;">{event.location}</h3>
+	<h3 style="text-align:center;">{event.location}</h3>
 </div>
 <div class="date_wrapper"><h3>{formatDate(new Date(event.date))}</h3></div>
 

@@ -29,12 +29,15 @@
 		src="/egg.svg"
 		alt="egg"
 	/>{/if}
-{#if generate.state.generating}<div>
-		{generate.state.percentage === 0 ? 'starting...' : generate.state.percentage}
+{#if generate.state.generating}
+<div class="progress-container">
+  <div>
+		{generate.state.percentage === 0 ? 'Warming up generator...' : generate.state.percentage}
 	</div>
-	<div style="width:70%;margin-bottom:1rem;">
+	<!-- <div style="width:70%;margin-bottom:1rem;"> -->
 		<ProgressBar />
-	</div>
+	<!-- </div> -->
+</div>
 {/if}
 <textarea
 	placeholder="Enter prompt here..."
@@ -59,17 +62,31 @@
 		height: 100px;
 		max-width: 500px;
 		background: none;
-		border: 2px solid white;
+		border: 1px solid white;
 	}
 
 	.generated_img {
 		width: 100%;
-		width: 500px;
+		max-width: 500px;
 		margin-bottom: 1rem;
 	}
+
 	.egg_img {
 		width: 100px;
 		margin: 3rem auto 3rem;
 		display: block;
 	}
+
+  .progress-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5); /* semi-transparent white */
+    font-style: italic; /* optional: makes the placeholder italic */
+}
 </style>

@@ -1,16 +1,14 @@
 <script>
-	import Raptor from '$lib/components/raptor.svelte';
 	import auth from '$lib/stores/auth.svelte';
-	import raptor from '$lib/stores/raptor.svelte';
 	import rsvp from '$lib/stores/rsvp.svelte';
 	import { onMount } from 'svelte';
 
-	import eventData from '$lib/stores/events';
-	import { formatDate } from '$lib/utils';
-	import generate from '$lib/stores/generate.svelte';
 	import IdbImgItem from '$lib/components/idb/idb-img-item.svelte';
-	import raptorSvelte from '$lib/stores/raptor.svelte';
 	import modelStorage from '$lib/idb';
+	import eventData from '$lib/stores/events';
+	import generate from '$lib/stores/generate.svelte';
+	import raptorSvelte from '$lib/stores/raptor.svelte';
+	import { formatDate } from '$lib/utils';
 
 	/** @type {{data:import('./$types').PageData}} */
 	const { data } = $props();

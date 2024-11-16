@@ -3,6 +3,27 @@ export async function GET({platform, url}) {
     const id = url.searchParams.get('id')
     
     try {
+        if (id?.includes("_thumb")) {
+            const key = `${id.replace("_thumb", "")}:favorite:b3:base64`
+            const base64String = await platform?.env.BAO_GEN.get(key);
+            if (!base64String) {
+                return new Response('Image not found', { status: 404 });
+            }
+            const binaryString = atob(base64String);
+            const bytes = new Uint8Array(binaryString.length);
+            for (let i = 0; i < binaryString.length; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            
+            return new Response(bytes, {
+                headers: {
+                    'Content-Type': 'image/png',
+                    'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+                    'Pragma': 'no-cache',
+                    'Expires': '0',
+                }
+            });
+        }
         const storage = platform?.env.STORAGE;
         if (!storage) {
             return new Response('Storage not configured', { status: 500 });

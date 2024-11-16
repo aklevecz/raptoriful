@@ -6,10 +6,10 @@
 </script>
 <div class="container">
     <h2>Make your own Bao dream</h2>
-    <div style="margin-bottom:1rem;">Generate your own Bao dreams and pick your favorite to show offk!</div>
+    <div style="margin-bottom:1rem;">Generate your own Bao dreams and pick your favorite to show off!</div>
     <BasicGenerator />
     {#if generate.state.cachedImgs.length}
-        <h2>Your Baos</h2>
+        <h2 style="margin:2rem 0 .5rem;">Your Baos</h2>
         <div class="generated-img-container">
             {#each generate.state.cachedImgs as imgObject (imgObject.id)}
                 <IdbImgItem {imgObject} />
@@ -25,8 +25,8 @@
         flex-direction:column;
         /* gap:1rem; */
     }
-    h1 {
-        margin:0;
+    h2 {
+        margin:0px;
     }
     .generated-img-container {
         display: flex;
