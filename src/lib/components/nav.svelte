@@ -1,14 +1,14 @@
 <script>
 	import Claw from './claw.svelte';
-import Raptor from './raptor.svelte';
+	import Raptor from './raptor.svelte';
 </script>
 
 <ul>
 	<li>
-		<a href="/"><Claw/></a>
+		<a href="/"><Claw /></a>
 	</li>
 	<li>
-		<a href="/profile"><Raptor accent={"black"} size={40} /></a>
+		<a href="/profile"><Raptor accent={'black'} size={40} /></a>
 	</li>
 </ul>
 
@@ -31,6 +31,12 @@ import Raptor from './raptor.svelte';
 		font-size: 30px;
 		text-decoration: none;
 		color: var(--primary-color);
+		display: flex;
+		height: 50px;
+		background: white;
+		width: 50px;
+		align-items: center;
+		justify-content: center;
 	}
 	a:hover {
 	}

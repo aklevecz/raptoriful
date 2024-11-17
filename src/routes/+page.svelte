@@ -156,8 +156,7 @@
     font-weight: bold;
     margin-bottom: 0.7rem;
 			"
-		>
-			GENERATE
+		>MAKE A DREAM
 		</div>
 		<GeneratorSection />
 	{/if}
