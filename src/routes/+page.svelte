@@ -6,6 +6,7 @@
 	import auth from '$lib/stores/auth.svelte';
 	import events from '$lib/stores/events';
 	import rsvp from '$lib/stores/rsvp.svelte';
+	import { generateScrollTo } from '$lib/utils';
 	import { onMount } from 'svelte';
 
 	/** @type {{data:import('./$types').PageData}} */
@@ -50,12 +51,8 @@
 	async function onRSVP() {
 		await rsvp.createRSVP(event.name);
 		setTimeout(() => {
-			window.scrollTo({
-			top: document.documentElement.scrollHeight,
-			behavior: 'smooth'
-		});
-		}, 10)
-
+			generateScrollTo();
+		}, 10);
 	}
 </script>
 
@@ -144,28 +141,12 @@
 	</div>
 
 	{#if isRSVPed}
-		<div
-			style="
-    background-color: var(--primary-color);
-    height: 55px;
-    color: white;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    margin-bottom: 0.7rem;
-			"
-		>MAKE A DREAM
-		</div>
+		<div id="generate-scroll-to" class="make-a-dream-nugget">Make a Dream</div>
 		<GeneratorSection />
 	{/if}
 </div>
 
 <style>
-	h1 {
-		margin: 0;
-	}
 	h3 {
 		font-size: 1rem;
 	}
@@ -249,14 +230,15 @@
 		}
 	}
 
-	.remi-line {
+	.make-a-dream-nugget {
+		height: 55px;
+		color: white;
+		font-size: 1.5rem;
 		display: flex;
 		align-items: center;
-	}
-	.remi-line a {
-		color: var(--red);
-	}
-	.remi-line img {
-		width: 50px;
+		justify-content: center;
+		font-weight: bold;
+		margin-bottom: 0.75rem;
+		border: 1px solid;
 	}
 </style>

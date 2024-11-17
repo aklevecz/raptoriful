@@ -1,6 +1,7 @@
 <script>
 	import auth from '$lib/stores/auth.svelte';
 	import rsvp from '$lib/stores/rsvp.svelte';
+	import { generateScrollTo } from '$lib/utils';
 	import RaptorAnimated from './raptor-animated.svelte';
 
 	/** @type {{eventName:string}} */
@@ -38,11 +39,8 @@
 			auth.updateFlow('code verified');
 			await rsvp.createRSVP(eventName);
 			setTimeout(() => {
-			window.scrollTo({
-			top: document.documentElement.scrollHeight,
-			behavior: 'smooth'
-		});
-		}, 10)
+				generateScrollTo();
+			}, 10);
 		} else {
 			error = 'Failed to verify code :(';
 		}

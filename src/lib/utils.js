@@ -138,3 +138,12 @@ export async function createThumbnail(originalBlob, maxWidth = 100) {
 		};
 	});
 }
+
+export function generateScrollTo() {
+	const generateScrollToEl = document.getElementById('generate-scroll-to');
+	if (generateScrollToEl) {
+		generateScrollToEl.scrollIntoView({
+			behavior: 'smooth'
+		});
+	}
+}

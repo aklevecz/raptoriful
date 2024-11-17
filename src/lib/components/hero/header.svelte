@@ -15,13 +15,15 @@
 	.header_wrapper {
 		display: flex;
 		gap: 1rem;
-		border: 1px solid var(--primary-color);
+		border: 1px solid var(--secondary-color);
+        color: var(--secondary-color);
 		padding: 0.25rem 0.3rem;
         padding: .5rem;
         padding-left: .75rem
 	}
     .date_wrapper {
-        border: 1px solid var(--primary-color);
+        border: 1px solid var(--secondary-color);
+        color: var(--secondary-color);
         border-top:0;
         padding: .5rem;
         padding-left: .75rem
