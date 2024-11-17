@@ -33,7 +33,6 @@
 		color: var(--primary-color);
 		display: flex;
 		height: 50px;
-		background: white;
 		width: 50px;
 		align-items: center;
 		justify-content: center;
