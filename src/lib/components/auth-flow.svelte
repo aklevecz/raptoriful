@@ -36,7 +36,13 @@
 		const success = await auth.verifyCode(code);
 		if (success) {
 			auth.updateFlow('code verified');
-			rsvp.createRSVP(eventName);
+			await rsvp.createRSVP(eventName);
+			setTimeout(() => {
+			window.scrollTo({
+			top: document.documentElement.scrollHeight,
+			behavior: 'smooth'
+		});
+		}, 10)
 		} else {
 			error = 'Failed to verify code :(';
 		}
