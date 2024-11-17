@@ -15,13 +15,14 @@
 
 	let imgEl = $state();
 
-	let imgId = $derived(raptorSvelte.state.favoriteBao)
+	let imgId = $derived(raptorSvelte.state.favoriteBao);
 	$effect(() => {
 		if (modelStorage && imgId) {
-			console.log(imgId)
-			let imgEntry = modelStorage.getGeneratedImg(imgId).then((imgEntry) => {
+			modelStorage.getGeneratedImg(imgId).then((imgEntry) => {
 				imgEl.src = imgEntry.base64Url;
 			});
+		} else {
+			// imgEl.src = '/smiler.svg';
 		}
 	});
 
@@ -47,12 +48,16 @@
 		</div>
 
 		<h3>Event Log</h3>
-		{#each rsvp.state.user.rsvps as userRsvp}
-			<div class="event-item">
-				<div>{eventData[userRsvp.event_name].name}</div>
-				<div>{formatDate(new Date(eventData[userRsvp.event_name].date))}</div>
-			</div>
-		{/each}
+		<div class="event_item_container">
+			{#each rsvp.state.user.rsvps as userRsvp}
+				<div class="event-item">
+					<div class="event_item_name">{eventData[userRsvp.event_name].name}</div>
+					<div class="event_item_date">
+						{formatDate(new Date(eventData[userRsvp.event_name].date))}
+					</div>
+				</div>
+			{/each}
+		</div>
 		<button class="logout btn" onclick={auth.logout}>Logout</button>
 	{/if}
 </div>
@@ -71,12 +76,30 @@
 	}
 	.user-phone {
 		text-align: center;
-		margin-top:0;
+		margin-top: 0;
 	}
 	.event-item {
+		border: 1px solid var(--primary-color);
+		border-top: none;
 		display: flex;
+		align-items: center;
 		gap: 1rem;
+		padding: .5rem;
 	}
+
+	.event_item_container > .event-item:first-child {
+		border-top: 1px solid var(--primary-color);
+	}
+
+	.event_item_name {
+		flex: 0 0 20%;
+		text-transform: capitalize;
+	}
+	.event_item_date {
+		flex: 1 0 auto;
+		font-size: 0.75rem;
+	}
+
 	button {
 		/* margin: auto; */
 		display: block;
@@ -92,6 +115,6 @@
 		margin-bottom: 1rem;
 	}
 	h3 {
-		margin-bottom:.5rem;
+		margin-bottom: 0.5rem;
 	}
 </style>

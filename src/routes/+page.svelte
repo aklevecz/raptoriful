@@ -46,11 +46,22 @@
 
 	let isRSVPed = $derived(rsvp.state[event.name]?.status === 'rsvped');
 	let rsvpList = $derived(rsvp.state[event.name]?.rsvps);
+
+	async function onRSVP() {
+		await rsvp.createRSVP(event.name);
+		setTimeout(() => {
+			window.scrollTo({
+			top: document.documentElement.scrollHeight,
+			behavior: 'smooth'
+		});
+		}, 10)
+
+	}
 </script>
 
 <div class="container">
 	<div class="header-info">
-		<Header event={event} />	
+		<Header {event} />
 		<div class="header-info-desc">
 			<div style="margin-bottom:.5rem;">Bao would like you to help him dream</div>
 			<div>Free drinks, snacks, pizza, & of course The Bao himself 🐶</div>
@@ -68,8 +79,14 @@
 
 		<!-- <div style="display:flex;justify-content:center;"><Raptor size={200} /></div> -->
 		<div class="rsvp-section">
+			<h3>
+				{event.noun} RSVPed<span
+					style="color:var(--purple); font-size:.75rem;margin-left:.5rem;display:{isRSVPed
+						? 'unset'
+						: 'none'}">(You are RSVPed!)</span
+				>
+			</h3>
 
-			<h3>{event.noun} RSVPed</h3>
 			<div class="raptor-container">
 				{#each rsvpList as raptor}
 					{#if event.name === 'zeitgeist'}
@@ -86,7 +103,14 @@
 					{/if}
 					{#if event.name === 'bao3'}
 						<div>
-							<img onerror={function(){this.src = '/smiler.svg';this.style.width='50px'}} src={`img?id=${raptor.phone_number}_thumb`} alt="Generated" />
+							<img
+								onerror={function () {
+									this.src = '/smiler.svg';
+									this.style.width = '50px';
+								}}
+								src={`img?id=${raptor.phone_number}_thumb`}
+								alt="Generated"
+							/>
 						</div>
 					{/if}
 				{/each}
@@ -97,14 +121,13 @@
 			{#if auth.state.authorized}
 				<div class="rsvp-button-container">
 					{#if isRSVPed}
-					<h3 style="color:var(--purple);">You are RSVPed!</h3>
 						<button class="btn cancel" onclick={() => rsvp.unRSVP(event.name)}>
 							{#if rsvp.fetching}...{:else}unRSVP{/if}</button
 						>
 					{/if}
 
 					{#if rsvp.state[event.name]?.status !== 'rsvped'}
-						<button class="btn lg fixed-bottom-button" onclick={() => rsvp.createRSVP(event.name)}
+						<button class="btn lg fixed-bottom-button" onclick={onRSVP}
 							>{#if rsvp.fetching}...{:else}RSVP{/if}</button
 						>
 					{/if}
@@ -121,6 +144,21 @@
 	</div>
 
 	{#if isRSVPed}
+		<div
+			style="
+    background-color: var(--primary-color);
+    height: 55px;
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 0.7rem;
+			"
+		>
+			GENERATE
+		</div>
 		<GeneratorSection />
 	{/if}
 </div>
@@ -138,24 +176,24 @@
 		justify-self: center;
 		min-height: 90vh;
 		padding: 0.5rem;
-		padding-bottom: 5rem;
+		/* padding-bottom: 5rem; */
 		box-sizing: border-box;
 	}
 
 	.header-info {
 		min-width: 340px;
-		margin-top:8px;
+		margin-top: 8px;
 		margin-bottom: 1rem;
 	}
 
 	.header-info-desc {
-		margin-top: 1rem;    padding: 0 0.6rem;
+		margin-top: 1rem;
+		padding: 0 0.6rem;
 	}
 
 	.header-info-featuring {
 		margin-top: 0.75rem;
 	}
-
 
 	@media (min-width: 768px) {
 		.container {
@@ -199,7 +237,7 @@
 	}
 	.cancel {
 		background-color: var(--red);
-		margin-top: .5rem;
+		margin-top: 0.5rem;
 	}
 	.auth-wrapper {
 		position: fixed;
