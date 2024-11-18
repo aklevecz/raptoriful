@@ -102,7 +102,7 @@
 		box-sizing: border-box;
 	}
 	.favorite {
-		background-color: #82c9a091;
+		background-color: #82c6c991;
 	}
 	img {
 		width: 100%;

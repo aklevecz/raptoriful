@@ -31,9 +31,9 @@
 <style>
 	:root {
 		--red: #ff4a4a;
-		--primary-color: #1B365D;
+		--primary-color: #636363;
 		--secondary-color: #fff;
-		--accent-color: #95b2c5;
+		--accent-color: #b7c0c5;
 		--purple: #965cff;
 	}
 	/* .noto-sans-<> {
