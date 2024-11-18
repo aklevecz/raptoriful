@@ -103,6 +103,7 @@
 							<img
 								onerror={function () {
 									this.src = '/smiler.svg';
+									// @ts-ignore
 									this.style.width = '50px';
 								}}
 								src={`img?id=${raptor.phone_number}_thumb`}
@@ -141,7 +142,6 @@
 	</div>
 
 	{#if isRSVPed}
-		<div id="generate-scroll-to" class="make-a-dream-nugget">Make a Dream</div>
 		<GeneratorSection />
 	{/if}
 </div>
@@ -228,17 +228,5 @@
 		.auth-wrapper {
 			position: static;
 		}
-	}
-
-	.make-a-dream-nugget {
-		height: 55px;
-		color: white;
-		font-size: 1.5rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-weight: bold;
-		margin-bottom: 0.75rem;
-		border: 1px solid;
 	}
 </style>
