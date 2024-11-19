@@ -78,7 +78,7 @@
 		<div class="rsvp-section">
 			<h3>
 				{event.noun} RSVPed<span
-					style="color:var(--purple); font-size:.75rem;margin-left:.5rem;display:{isRSVPed
+					style="color:lime; font-size:.75rem;margin-left:.5rem;display:{isRSVPed
 						? 'unset'
 						: 'none'}">(You are RSVPed!)</span
 				>
@@ -162,7 +162,6 @@
 
 	.header-info {
 		min-width: 340px;
-		margin-top: 8px;
 		margin-bottom: 1rem;
 	}
 

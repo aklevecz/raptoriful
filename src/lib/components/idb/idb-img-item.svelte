@@ -72,9 +72,11 @@
 		}
 	}
 
+  async function onToggleDeleteModal() {
+    showModal = !showModal;
+  }
+
 	async function onDelete() {
-    showModal = true;
-    return;
 		await modelStorage.delete('generatedImgs', imgObject.id);
 		generate.refreshAllGeneratedImgs();
 	}
@@ -86,11 +88,11 @@
 	<img bind:this={imgEl} alt="Generated" />
 	<!-- <div>{imgObject.prompt}</div> -->
 	<button class="btn_icon" onclick={onFavorite}><HeartIcon active={isFavorite}/></button>
-	<button class="btn_icon" onclick={onDelete}><img style="width:24px;" src="/icons/trash-icon.svg" alt="Delete" /></button>
+	<button class="btn_icon" onclick={onToggleDeleteModal}><img style="width:24px;" src="/icons/trash-icon.svg" alt="Delete" /></button>
 	<!-- <button class="btn" onclick={onUpload}>Upload</button> -->
    <Modal title="Delete image" bind:showModal={showModal}>
     <div style="margin:1rem 0;word-break:auto-phrase;">Are you sure you want to delete this image?</div>
-    <button class="btn" onclick={() => showModal = false}>Cancel</button>
+    <button class="btn" onclick={onToggleDeleteModal}>Cancel</button>
     <button class="btn neg" onclick={onDelete}>Delete</button>
    </Modal>
 </div>

@@ -31,7 +31,7 @@
 <style>
 	:root {
 		--red: #ff4a4a;
-		--primary-color: #636363;
+		--primary-color: #333333;
 		--secondary-color: #fff;
 		--accent-color: #b7c0c5;
 		--purple: #965cff;
@@ -59,6 +59,7 @@
 	}
 	:global(button.btn) {
 		background-color: var(--primary-color);
+
 		color: var(--secondary-color);
 		font-size: 16px;
 		font-weight: 600;

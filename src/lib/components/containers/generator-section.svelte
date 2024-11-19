@@ -2,12 +2,13 @@
 	import BasicGenerator from '../generate/basic-generator.svelte';
 	import generate from '$lib/stores/generate.svelte';
 	import IdbImgItem from '$lib/components/idb/idb-img-item.svelte';
+	import SectionHeading from '../section-heading.svelte';
 </script>
 
 <div class="container">
-	<div id="generate-scroll-to" class="make-a-dream-nugget">Make a Dream</div>
+	<SectionHeading id="generate-scroll-to" class="make-a-dream-nugget">Make a Dream</SectionHeading>
 	<h2>Make your own Bao dream</h2>
-	<div style="margin-bottom:1rem;">
+	<div style="margin-bottom:0.5rem;">
 		Generate your own Bao dreams and pick your favorite to show off!
 	</div>
 	<BasicGenerator />
@@ -29,23 +30,12 @@
 		/* gap:1rem; */
 	}
 	h2 {
-		margin: 0px;
+		margin: 8px 0 4px;
+        font-size: 1.25rem;
 	}
 	.generated-img-container {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 1rem;
-	}
-
-	.make-a-dream-nugget {
-		height: 55px;
-		color: white;
-		font-size: 1.5rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-weight: bold;
-		margin-bottom: 0.75rem;
-		border: 1px solid;
 	}
 </style>

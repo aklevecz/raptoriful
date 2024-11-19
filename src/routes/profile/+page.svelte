@@ -9,6 +9,7 @@
 	import generate from '$lib/stores/generate.svelte';
 	import raptorSvelte from '$lib/stores/raptor.svelte';
 	import { formatDate } from '$lib/utils';
+	import SectionHeading from '$lib/components/section-heading.svelte';
 
 	/** @type {{data:import('./$types').PageData}} */
 	const { data } = $props();
@@ -35,7 +36,7 @@
 
 <div class="container">
 	{#if auth.state.authorized}
-		<h2 class="user-phone">{auth.state.user.phoneNumber}</h2>
+		<SectionHeading>Profile</SectionHeading>
 		<div style="display:flex;justify-content:center;">
 			<!-- <Raptor size={270} accent={raptor.state.color} /> -->
 			<img class="favorite-bao" bind:this={imgEl} alt="favorite bao" />
@@ -58,6 +59,8 @@
 				</div>
 			{/each}
 		</div>
+		<h3>User</h3>
+		<h4 class="user-phone">Phone: {auth.state.user.phoneNumber}</h4>
 		<button class="logout btn" onclick={auth.logout}>Logout</button>
 	{/if}
 </div>
@@ -68,15 +71,19 @@
 		flex-direction: column;
 		min-height: 90vh;
 		padding: 1rem;
+		padding-top: 0;
 	}
 	.generated-img-container {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 1rem;
+		justify-content: center;
 	}
 	.user-phone {
-		text-align: center;
-		margin-top: 0;
+		/* text-align: center; */
+		margin-top: 0rem;
+		margin-bottom: 0.5rem;
+		font-weight: 400;
 	}
 	.event-item {
 		border: 1px solid var(--primary-color);
@@ -84,7 +91,7 @@
 		display: flex;
 		align-items: center;
 		gap: 1rem;
-		padding: .5rem;
+		padding: 0.5rem;
 	}
 
 	.event_item_container > .event-item:first-child {
@@ -105,7 +112,7 @@
 		display: block;
 	}
 	.logout {
-		margin-top: 1rem;
+		/* margin-top: 1rem; */
 		background-color: var(--red);
 		width: 100px;
 	}
