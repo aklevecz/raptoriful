@@ -5,9 +5,9 @@
 <h1 {...restProps}>{@render children()}</h1>
 <style>
     h1 {
-        height: 55px;
+        height: 44px;
 		color: white;
-		font-size: 1.5rem;
+		font-size: 1.25rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;

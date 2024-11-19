@@ -78,7 +78,7 @@
 		<div class="rsvp-section">
 			<h3>
 				{event.noun} RSVPed<span
-					style="color:lime; font-size:.75rem;margin-left:.5rem;display:{isRSVPed
+					style="color:var(--green); font-size:.75rem;margin-left:.5rem;display:{isRSVPed
 						? 'unset'
 						: 'none'}">(You are RSVPed!)</span
 				>
@@ -107,6 +107,7 @@
 									this.style.width = '50px';
 								}}
 								src={`img?id=${raptor.phone_number}_thumb`}
+								style="border-radius:50%;"
 								alt="Generated"
 							/>
 						</div>
@@ -196,7 +197,8 @@
 	.promo-video {
 		width: 100%;
 		max-width: 500px;
-		margin: 1rem 0;
+		margin: 0.5rem 0 1rem;
+		border-radius: 40%;
 	}
 	h3 {
 		margin: 0;

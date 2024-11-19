@@ -120,6 +120,9 @@
 		width: 300px;
 		height: 300px;
 		margin-bottom: 1rem;
+		padding: 10px;
+		background: var(--green);
+		border-radius: 40px;
 	}
 	h3 {
 		margin-bottom: 0.5rem;

@@ -17,7 +17,7 @@
 		},
 		missingText: {
 			title: 'Missing Text',
-			content: ['Please enter some text.']
+			content: ['Please enter some text.', 'Like literally any text-- what do you think you were going to generate?']
 		}
 	};
 
@@ -86,7 +86,7 @@
 		{@html contentBlock}
 	</p>
   {/each}
-  <img class="example_image" src="/bao/bao_triceratops.webp" alt="Bao riding a triceratops" />
+  {#if modalInfo.title === 'Missing Bao'}'<img class="example_image" src="/bao/bao_triceratops.webp" alt="Bao riding a triceratops" />{/if}
 	<button class="btn" onclick={() => (showModal = false)}>Ok</button>
 </Modal>
 
