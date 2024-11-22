@@ -16,7 +16,7 @@
 
 	let imgEl = $state();
 
-	let imgId = $derived(raptorSvelte.state.favoriteBao);
+	let imgId = $derived(raptorSvelte.state.mainBao);
 	$effect(() => {
 		if (modelStorage && imgId) {
 			modelStorage.getGeneratedImg(imgId).then((imgEntry) => {

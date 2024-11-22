@@ -25,27 +25,33 @@
 
 	async function onUpload(action = 'save-favorite') {
 		try {
-      if (action === 'remove-favorite') {
-        const removeResponse = await fetch('/favorites', {method:"DELETE",body:JSON.stringify({id:imgObject.id})});
-        if (!removeResponse.ok) {
-          const errorData = await removeResponse.json();
-          throw new Error(errorData.error || 'Remove favorite failed');
-        }
-        const result = await removeResponse.json();
-        console.log('Remove favorite successful:', result);
-        return
-      }
+			if (action === 'remove-favorite') {
+				const removeResponse = await fetch('/favorites', {
+					method: 'DELETE',
+					body: JSON.stringify({ id: imgObject.id })
+				});
+				if (!removeResponse.ok) {
+					const errorData = await removeResponse.json();
+					throw new Error(errorData.error || 'Remove favorite failed');
+				}
+				const result = await removeResponse.json();
+				console.log('Remove favorite successful:', result);
+				return;
+			}
 
 			// Fetch the image
 			const response = await fetch(imgEl.src);
 			const blob = await response.blob();
+			const formData = new FormData();
 
 			// Create a new blob with explicit content type
-			const imageBlob = new Blob([blob], { type: 'image/png' });
+			// const imageBlob = new Blob([blob], { type: 'image/png' });
+			// formData.append('image', imageBlob, `${imgObject.id}.png`);
+
+			const imageBlob = new Blob([blob], { type: 'image/jpeg' });
+			formData.append('image', imageBlob, `${imgObject.id}.jpg`);
 			const thumbnailBase64 = await createThumbnail(imageBlob);
-			const formData = new FormData();
 			formData.append('id', imgObject.id);
-			formData.append('image', imageBlob, `${imgObject.id}.png`);
 			formData.append('action', action);
 			formData.append('thumbnailBase64', thumbnailBase64);
 			formData.append('prompt', imgObject.prompt);
@@ -82,9 +88,9 @@
 				await raptorSvelte.selectFavoriteBao(imgObject.id);
 				await onUpload('save-favorites');
 			} else {
-        await raptorSvelte.removeFavoriteBao(imgObject.id);
-        await onUpload('remove-favorite');
-      }
+				await raptorSvelte.removeFavoriteBao(imgObject.id);
+				await onUpload('remove-favorite');
+			}
 			// Optional: Show success message
 		} catch (error) {
 			console.error('Favorite error:', error);
@@ -111,8 +117,8 @@
 		await modelStorage.delete('generatedImgs', imgObject.id);
 		generate.refreshAllGeneratedImgs();
 	}
-
 </script>
+
 <div class:favorite={isMain} class="generated-img-item">
 	<img bind:this={imgEl} alt="Generated" />
 	<!-- <div>{imgObject.prompt}</div> -->
@@ -139,7 +145,7 @@
 	}
 	.favorite {
 		background-color: #82c6c991;
-    filter: brightness(1.25);
+		filter: brightness(1.25);
 	}
 	img {
 		width: 100%;

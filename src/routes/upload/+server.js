@@ -45,20 +45,21 @@ export async function POST({ request, platform, cookies }) {
 		}
 
 		// Validate image size (e.g., max 5MB)
-		const maxSize = 5 * 1024 * 1024; // 5MB
+		const maxSize = 50 * 1024 * 1024; // 5MB
 		if (imageFile.size > maxSize) {
 			throw new Error(`Image too large. Maximum size is ${maxSize / 1024 / 1024}MB`);
 		}
 
 		// Generate filename with timestamp to prevent overwrites
 		const timestamp = Date.now();
-		const filename = `bao3/rsvp/${phoneNumber}`;
+		const filepath = `bao3/rsvp/${phoneNumber}`;
+        const contentTypeSuffix = contentType.split('/')[1];
 
 		// Upload to R2 with explicit content type
 		await Promise.all([
-			platform.env.STORAGE.put(`${filename}.png`, imageFile, {
+			platform.env.STORAGE.put(`${filepath}/${id}.${contentTypeSuffix}`, imageFile, {
 				httpMetadata: {
-					contentType: 'image/png',
+					contentType,
 					cacheControl: 'public, max-age=31536000'
 				},
 				customMetadata: {
@@ -103,9 +104,9 @@ export async function POST({ request, platform, cookies }) {
 			JSON.stringify({
 				success: true,
 				filename,
-				imageUrl: `/img?id=${phoneNumber}.png`, // URL for your GET endpoint
+				imageUrl: `/img?id=${phoneNumber}.${contentTypeSuffix}`, // URL for your GET endpoint
 				timestamp,
-				contentType: 'image/png',
+				contentType,
 				size: imageFile.size
 			}),
 			{

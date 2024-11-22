@@ -17,19 +17,21 @@ export async function GET({platform, url}) {
             
             return new Response(bytes, {
                 headers: {
-                    'Content-Type': 'image/png',
+                    'Content-Type': 'image/jpeg',
                     'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
                     'Pragma': 'no-cache',
                     'Expires': '0',
                 }
             });
         }
+
+        // IS THIS BEING USED?
         const storage = platform?.env.STORAGE;
         if (!storage) {
             return new Response('Storage not configured', { status: 500 });
         }
 
-        const object = await storage.get(`bao3/rsvp/${id}.png`);
+        const object = await storage.get(`bao3/rsvp/${id}`);
         
         if (!object) {
             return new Response('Image not found', { status: 404 });
@@ -39,7 +41,7 @@ export async function GET({platform, url}) {
         console.log('R2 Content Type:', object.httpMetadata?.contentType);
 
         // Explicitly set image/png since we know these are PNG files
-        const contentType = 'image/png';
+        const contentType = 'image/jpeg';
 
         return new Response(await object.arrayBuffer(), {
             headers: {
