@@ -1,9 +1,18 @@
 import api from '$lib/api';
-import favoriteSvelte from './favorite.svelte';
 
+/** @typedef {Object} State
+ * @property {string} color
+ * @property {string} favoriteBao
+ * @property {Array<string>} favoriteBaos
+ * @property {string} mainBao
+ */
+
+/** @type {State} */
 const initialState = {
 	color: '#fff',
-	favoriteBao: ""
+	favoriteBao: "",
+	favoriteBaos: [],
+	mainBao: ""
 };
 export function createRaptor() {
 	const raptor = $state(initialState);
@@ -18,12 +27,24 @@ export function createRaptor() {
 				raptor.color = `#${r.raptor.color}`;
 				if (r.favorite) {
 					raptor.favoriteBao = r.favorite;
+					raptor.mainBao = r.favorite
 					// favoriteSvelte.selectFavoriteBao(r.favorite);
+				}
+				if (r.favorites) {
+					console.log(r.favorites)
+					raptor.favoriteBaos = r.favorites;
 				}
 			}
 		},
 		selectFavoriteBao: (/** @type {string} */ item) => {
-			raptor.favoriteBao = item
+			raptor.favoriteBaos = [...raptor.favoriteBaos.filter(i => i !== item), item]
+		},
+		removeFavoriteBao: (/** @type {string} */ item) => {
+			raptor.favoriteBaos = raptor.favoriteBaos.filter(i => i !== item)
+		},
+		selectMainBao: (/** @type {string} */ item) => {
+			console.log(`selectMainBao: ${item}`)
+			raptor.mainBao = item
 		}
 	};
 }

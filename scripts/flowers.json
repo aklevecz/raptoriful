@@ -1,0 +1,596 @@
+[
+  {
+    "flower_id": 1,
+    "created_at": "2024-01-06 02:06:10",
+    "phone_number": "11234567890",
+    "first_name": "Test",
+    "claimed_flower": null,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 2,
+    "created_at": "2024-06-12 06:30:56",
+    "phone_number": "14159671642",
+    "first_name": "Ariel",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 4030
+  },
+  {
+    "flower_id": 3,
+    "created_at": "2024-05-10 01:15:46",
+    "phone_number": "17604089325",
+    "first_name": "David T",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 4,
+    "created_at": "2024-06-01 00:53:10",
+    "phone_number": "19165012472",
+    "first_name": "Derek",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 5,
+    "created_at": "2024-06-02 06:04:21",
+    "phone_number": "12135198233",
+    "first_name": "Gary",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 6,
+    "created_at": "2024-06-02 18:28:05",
+    "phone_number": "16096511581",
+    "first_name": "Julia",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 7,
+    "created_at": "2024-06-04 20:50:28",
+    "phone_number": "13105147331",
+    "first_name": "Rachelle",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 8,
+    "created_at": "2024-06-04 22:51:41",
+    "phone_number": "12137139936",
+    "first_name": "Dennis",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 9,
+    "created_at": "2024-06-06 21:42:00",
+    "phone_number": "19493225149",
+    "first_name": "Cristina",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 10,
+    "created_at": "2024-06-07 04:00:07",
+    "phone_number": "12132803821",
+    "first_name": "Alex",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 11,
+    "created_at": "2024-06-07 19:46:11",
+    "phone_number": "19145197808",
+    "first_name": "Anna",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 12,
+    "created_at": "2024-06-11 19:17:26",
+    "phone_number": "13106990079",
+    "first_name": "Victoria",
+    "claimed_flower": 0,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 13,
+    "created_at": "2024-06-13 00:27:10",
+    "phone_number": "16072213293",
+    "first_name": "Peter",
+    "claimed_flower": 0,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 14,
+    "created_at": "2024-06-14 18:37:05",
+    "phone_number": "15033483012",
+    "first_name": "Levi",
+    "claimed_flower": 0,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 15,
+    "created_at": "2024-06-15 08:18:45",
+    "phone_number": "16265121299",
+    "first_name": "Sherlan",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 16,
+    "created_at": "2024-06-15 23:00:27",
+    "phone_number": "12069723217",
+    "first_name": "Rebecca",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 17,
+    "created_at": "2024-06-15 23:18:18",
+    "phone_number": "18184273856",
+    "first_name": "Danny",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 18,
+    "created_at": "2024-06-15 23:20:46",
+    "phone_number": "17857645315",
+    "first_name": "Ellie",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 19,
+    "created_at": "2024-06-15 23:37:07",
+    "phone_number": "19199463492",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 20,
+    "created_at": "2024-06-15 23:50:30",
+    "phone_number": "17602144526",
+    "first_name": "Carson",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 21,
+    "created_at": "2024-06-15 23:51:19",
+    "phone_number": "16266764104",
+    "first_name": "Laura",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 22,
+    "created_at": "2024-06-16 00:13:37",
+    "phone_number": "19098381408",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 23,
+    "created_at": "2024-06-16 00:27:31",
+    "phone_number": "17143428623",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 24,
+    "created_at": "2024-06-16 01:50:09",
+    "phone_number": "18185778646",
+    "first_name": "Marly",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 160
+  },
+  {
+    "flower_id": 25,
+    "created_at": "2024-06-16 02:05:26",
+    "phone_number": "19499814560",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 26,
+    "created_at": "2024-06-16 03:40:24",
+    "phone_number": "18187995234",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 27,
+    "created_at": "2024-06-19 17:50:29",
+    "phone_number": "16268621783",
+    "first_name": "Mai",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 28,
+    "created_at": "2024-06-19 18:43:10",
+    "phone_number": "16103315183",
+    "first_name": "Ian",
+    "claimed_flower": 0,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 29,
+    "created_at": "2024-06-19 23:56:51",
+    "phone_number": "16306897235",
+    "first_name": "Lauren",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 30,
+    "created_at": "2024-06-20 00:16:31",
+    "phone_number": "16506198142",
+    "first_name": "Marco",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 31,
+    "created_at": "2024-06-21 19:27:37",
+    "phone_number": "16107163178",
+    "first_name": "Nicole",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 32,
+    "created_at": "2024-06-21 19:27:37\t",
+    "phone_number": "14086096999",
+    "first_name": "Wilson",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 33,
+    "created_at": "2024-10-12 22:48:19",
+    "phone_number": "19083766480",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 34,
+    "created_at": "2024-10-12 22:59:16",
+    "phone_number": "16618747269",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 35,
+    "created_at": "2024-10-12 23:01:14",
+    "phone_number": "13103870397",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 36,
+    "created_at": "2024-10-12 23:02:27",
+    "phone_number": "18183892114",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 37,
+    "created_at": "2024-10-12 23:38:21",
+    "phone_number": "18185994790",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 300
+  },
+  {
+    "flower_id": 38,
+    "created_at": "2024-10-12 23:39:21",
+    "phone_number": "17147933085",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 39,
+    "created_at": "2024-10-13 00:00:48",
+    "phone_number": "19495663959",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 40,
+    "created_at": "2024-10-13 00:00:49",
+    "phone_number": "19499220912",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 41,
+    "created_at": "2024-10-13 00:10:26",
+    "phone_number": "18184222688",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 42,
+    "created_at": "2024-10-13 00:45:19",
+    "phone_number": "16233633377",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 43,
+    "created_at": "2024-10-13 00:52:33",
+    "phone_number": "16096581552",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 130
+  },
+  {
+    "flower_id": 44,
+    "created_at": "2024-10-13 02:10:22",
+    "phone_number": "19155256059",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 45,
+    "created_at": "2024-10-13 02:13:00",
+    "phone_number": "13232189901",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 46,
+    "created_at": "2024-10-13 02:17:24",
+    "phone_number": "16469370926",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 47,
+    "created_at": "2024-10-13 02:17:42",
+    "phone_number": "19168936733",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 48,
+    "created_at": "2024-10-13 02:20:23",
+    "phone_number": "15622525891",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 49,
+    "created_at": "2024-10-13 02:46:49",
+    "phone_number": "18473662737",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 50,
+    "created_at": "2024-10-13 02:55:10",
+    "phone_number": "16263215199",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 100
+  },
+  {
+    "flower_id": 51,
+    "created_at": "2024-10-13 02:56:41",
+    "phone_number": "13106480750",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 52,
+    "created_at": "2024-10-13 02:58:52",
+    "phone_number": "17142098075",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 53,
+    "created_at": "2024-10-13 03:00:48",
+    "phone_number": "16268221380",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 54,
+    "created_at": "2024-10-13 03:02:30",
+    "phone_number": "13109637635",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 55,
+    "created_at": "2024-10-13 03:02:59",
+    "phone_number": "14045452726",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 56,
+    "created_at": "2024-10-13 03:07:07",
+    "phone_number": "16065711926",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 57,
+    "created_at": "2024-10-13 03:07:29",
+    "phone_number": "13108693515",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 58,
+    "created_at": "2024-10-13 03:07:44",
+    "phone_number": "18187317767",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 59,
+    "created_at": "2024-10-13 03:09:48",
+    "phone_number": "13108494317",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 60,
+    "created_at": "2024-10-13 03:14:54",
+    "phone_number": "19514960227",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 61,
+    "created_at": "2024-10-13 03:23:13",
+    "phone_number": "19128448905",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 62,
+    "created_at": "2024-10-13 03:40:24",
+    "phone_number": "19099928606",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 63,
+    "created_at": "2024-10-13 03:40:52",
+    "phone_number": "12027443855",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 64,
+    "created_at": "2024-10-13 04:21:37",
+    "phone_number": "18188251613",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 65,
+    "created_at": "2024-10-13 04:23:39",
+    "phone_number": "13107951847",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  },
+  {
+    "flower_id": 66,
+    "created_at": "2024-10-13 04:45:23",
+    "phone_number": "17326628282",
+    "first_name": "noname",
+    "claimed_flower": 1,
+    "level": 1,
+    "total_experience": 0
+  }
+]

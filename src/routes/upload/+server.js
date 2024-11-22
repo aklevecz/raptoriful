@@ -1,3 +1,7 @@
+// SEPARATE SETTING STAR AND FAVORITE FROM UPLOADING - OR JUST HAVE AN ACTION TYPE BETWEEN FAVORITE AND STAR
+
+// OR JUST MOVE UPLOADING INTO AN ABSTRACTED FUNCTION AND HAVE ENDPOINTS FOR FAVORITE VS FAVORTIES
+
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request, platform, cookies }) {
 	try {
@@ -12,26 +16,22 @@ export async function POST({ request, platform, cookies }) {
 			throw new Error('No authentication token provided');
 		}
 
-		const {phoneNumber} = await platform.env.AUTH_SERVICE.authorizeToken(token);
+		const { phoneNumber } = await platform.env.AUTH_SERVICE.authorizeToken(token);
 		if (!phoneNumber) {
 			throw new Error('Invalid authentication payload');
 		}
 
 		// Parse form data
 		const formData = await request.formData();
-        const id = formData.get('id');
+		const id = formData.get('id');
 		const imageFile = formData.get('image');
-		// const thumbnailBlob = formData.get('thumbnailBlob');
-        const thumbnailBase64 = formData.get('thumbnailBase64');
+		const action = formData.get('action');
+		const thumbnailBase64 = formData.get('thumbnailBase64');
 		const prompt = formData.get('prompt')?.toString().trim();
-
-        await platform?.env.BAO_GEN.put(`${phoneNumber}:favorite:b3`, id);
-        const thumbnailKey = `${phoneNumber}:favorite:b3:base64`
-        await platform?.env.BAO_GEN.put(thumbnailKey, thumbnailBase64);
 
 		// Validate image
 		if (!imageFile || !(imageFile instanceof Blob)) {
-			throw new Error('No image provided');   
+			throw new Error('No image provided');
 		}
 
 		// Validate image type
@@ -66,7 +66,7 @@ export async function POST({ request, platform, cookies }) {
 					uploadedAt: new Date().toISOString(),
 					type: 'full'
 				}
-			}),
+			})
 			// platform.env.STORAGE.put(`${filename}_thumb.png`, thumbnailFile, {
 			// 	httpMetadata: {
 			// 		contentType: 'image/png',
@@ -79,10 +79,25 @@ export async function POST({ request, platform, cookies }) {
 			// 	}
 			// })
 		]);
+        console.log(`Successfully uploaded image: ${filename}`);
 
+        // DIFFERENT ACTIONS FOR FAVORITES OR MAIN
+		if (action === 'save-main') {
+			const thumbnailKey = `${phoneNumber}:favorite:b3:base64`;
+			await platform?.env.BAO_GEN.put(thumbnailKey, thumbnailBase64);
+            await platform?.env.BAO_GEN.put(`${phoneNumber}:favorite:b3`, id);
+		}
 		// Log successful upload
-		console.log(`Successfully uploaded image: ${filename}`);
-
+		if (action === 'save-favorites') {
+			const favoritesKey = `${phoneNumber}:favorites:b3`;
+			const currentFavoritesRes = await platform?.env.BAO_GEN.get(favoritesKey);
+			let currentFavorites = new Set();
+			if (currentFavoritesRes) {
+				currentFavorites = new Set(JSON.parse(currentFavoritesRes));
+			}
+			currentFavorites.add(id);
+			await platform?.env.BAO_GEN.put(favoritesKey, JSON.stringify(Array.from(currentFavorites)));
+		}
 		// Return success response
 		return new Response(
 			JSON.stringify({

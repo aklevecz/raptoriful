@@ -5,6 +5,7 @@
 	import Raptor from '$lib/components/raptor.svelte';
 	import auth from '$lib/stores/auth.svelte';
 	import events from '$lib/stores/events';
+	import raptorSvelte from '$lib/stores/raptor.svelte';
 	import rsvp from '$lib/stores/rsvp.svelte';
 	import { generateScrollTo } from '$lib/utils';
 	import { onMount } from 'svelte';
@@ -17,6 +18,7 @@
 		auth.init({ authorized: data.authorized, user: data.user });
 		rsvp.init(event.name);
 		rsvp.getAllRsvps(event.name);
+		console.log(raptorSvelte.state)
 	});
 
 	/** @type {HTMLVideoElement} */

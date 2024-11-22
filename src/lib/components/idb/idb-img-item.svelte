@@ -6,11 +6,12 @@
 	import { onMount } from 'svelte';
 	import HeartIcon from '../icons/heart-icon.svelte';
 	import Modal from '../modal.svelte';
+	import StarIcon from '../icons/star-icon.svelte';
 
 	/** @type {{imgObject: Omit<GeneratedImgEntry, "base64Url">}}*/
 	let { imgObject } = $props();
 
-  let showModal = $state(false);
+	let showModal = $state(false);
 
 	let imgEl = $state();
 
@@ -19,8 +20,22 @@
 		imgEl.src = imgEntry.base64Url;
 	});
 
-	async function onUpload() {
+	let isMain = $derived(raptorSvelte.state.mainBao === imgObject.id);
+	let isFavorite = $derived(raptorSvelte.state.favoriteBaos.includes(imgObject.id));
+
+	async function onUpload(action = 'save-favorite') {
 		try {
+      if (action === 'remove-favorite') {
+        const removeResponse = await fetch('/favorites', {method:"DELETE",body:JSON.stringify({id:imgObject.id})});
+        if (!removeResponse.ok) {
+          const errorData = await removeResponse.json();
+          throw new Error(errorData.error || 'Remove favorite failed');
+        }
+        const result = await removeResponse.json();
+        console.log('Remove favorite successful:', result);
+        return
+      }
+
 			// Fetch the image
 			const response = await fetch(imgEl.src);
 			const blob = await response.blob();
@@ -29,14 +44,14 @@
 			const imageBlob = new Blob([blob], { type: 'image/png' });
 			const thumbnailBase64 = await createThumbnail(imageBlob);
 			const formData = new FormData();
-      formData.append('id', imgObject.id);
+			formData.append('id', imgObject.id);
 			formData.append('image', imageBlob, `${imgObject.id}.png`);
-			// formData.append('thumbnailBlob', thumbnailBob, `${imgObject.id}_thumb.png`);
+			formData.append('action', action);
 			formData.append('thumbnailBase64', thumbnailBase64);
 			formData.append('prompt', imgObject.prompt);
 
 			console.log('Upload sizes:', {
-				original: imageBlob.size,
+				original: imageBlob.size
 				// thumbnail: thumbnailBlob.size
 			});
 
@@ -63,8 +78,13 @@
 
 	async function onFavorite() {
 		try {
-			await raptorSvelte.selectFavoriteBao(imgObject.id);
-			await onUpload();
+			if (!isFavorite) {
+				await raptorSvelte.selectFavoriteBao(imgObject.id);
+				await onUpload('save-favorites');
+			} else {
+        await raptorSvelte.removeFavoriteBao(imgObject.id);
+        await onUpload('remove-favorite');
+      }
 			// Optional: Show success message
 		} catch (error) {
 			console.error('Favorite error:', error);
@@ -72,29 +92,43 @@
 		}
 	}
 
-  async function onToggleDeleteModal() {
-    showModal = !showModal;
-  }
+	async function onMained() {
+		try {
+			await raptorSvelte.selectMainBao(imgObject.id);
+			await onUpload('save-main');
+			// Optional: Show success message
+		} catch (error) {
+			console.error('Favorite error:', error);
+			// Handle error appropriately
+		}
+	}
+
+	async function onToggleDeleteModal() {
+		showModal = !showModal;
+	}
 
 	async function onDelete() {
 		await modelStorage.delete('generatedImgs', imgObject.id);
 		generate.refreshAllGeneratedImgs();
 	}
 
-  let isFavorite = $derived(raptorSvelte.state.favoriteBao === imgObject.id);
 </script>
-
-<div class:favorite={raptorSvelte.state.favoriteBao === imgObject.id} class="generated-img-item">
+<div class:favorite={isMain} class="generated-img-item">
 	<img bind:this={imgEl} alt="Generated" />
 	<!-- <div>{imgObject.prompt}</div> -->
-	<button class="btn_icon" onclick={onFavorite}><HeartIcon active={isFavorite}/></button>
-	<button class="btn_icon" onclick={onToggleDeleteModal}><img style="width:24px;" src="/icons/trash-icon.svg" alt="Delete" /></button>
+	<button class="btn_icon" onclick={onFavorite}><HeartIcon active={isFavorite} /></button>
+	<button class="btn_icon" onclick={onMained}><StarIcon active={isMain} /></button>
+	<button class="btn_icon" onclick={onToggleDeleteModal}
+		><img style="width:24px;" src="/icons/trash-icon.svg" alt="Delete" /></button
+	>
 	<!-- <button class="btn" onclick={onUpload}>Upload</button> -->
-   <Modal title="Delete image" bind:showModal={showModal}>
-    <div style="margin:1rem 0;word-break:auto-phrase;">Are you sure you want to delete this image?</div>
-    <button class="btn" onclick={onToggleDeleteModal}>Cancel</button>
-    <button class="btn neg" onclick={onDelete}>Delete</button>
-   </Modal>
+	<Modal title="Delete image" bind:showModal>
+		<div style="margin:1rem 0;word-break:auto-phrase;">
+			Are you sure you want to delete this image?
+		</div>
+		<button class="btn" onclick={onToggleDeleteModal}>Cancel</button>
+		<button class="btn neg" onclick={onDelete}>Delete</button>
+	</Modal>
 </div>
 
 <style>
@@ -105,10 +139,11 @@
 	}
 	.favorite {
 		background-color: #82c6c991;
+    filter: brightness(1.25);
 	}
 	img {
 		width: 100%;
 		height: auto;
-    border-radius: 10px;
+		border-radius: 10px;
 	}
 </style>

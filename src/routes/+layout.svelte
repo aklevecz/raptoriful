@@ -35,7 +35,8 @@
 		--secondary-color: #fff;
 		--accent-color: #b7c0c5;
 		--purple: #965cff;
-		--green: #7bff7b
+		--green: #7bff7b;
+		--yellow: #f7ed37;
 	}
 	/* .noto-sans-<> {
 		font-family: 'Noto Sans', sans-serif;

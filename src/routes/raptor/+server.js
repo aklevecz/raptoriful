@@ -12,7 +12,9 @@ export async function GET({ cookies, platform }) {
 				.bind(payload.phoneNumber)
 				.all();
 			const favorite = await platform?.env.BAO_GEN.get(`${payload.phoneNumber}:favorite:b3`);
-			return json({ success: true, raptor: results[0], favorite });
+			const favorites = JSON.parse((await platform?.env.BAO_GEN.get(`${payload.phoneNumber}:favorites:b3`) || '[]'))
+			console.log(favorites)
+			return json({ success: true, raptor: results[0], favorite, favorites });
 		} catch (e) {
 			console.log(e);
 		}
