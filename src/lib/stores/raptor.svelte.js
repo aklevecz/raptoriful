@@ -23,6 +23,7 @@ export function createRaptor() {
 		},
 		init: async () => {
 			const r = await api.getRaptor();
+			console.log(`raptor init:`, r)
 			if (r.success) {
 				raptor.color = `#${r.raptor.color}`;
 				if (r.favorite) {

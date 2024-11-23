@@ -55,9 +55,11 @@ export async function POST({ request, platform, cookies }) {
 		const filepath = `bao3/rsvp/${phoneNumber}`;
         const contentTypeSuffix = contentType.split('/')[1];
 
+        const filename = `${id}_${timestamp}.${contentTypeSuffix}`;
+
 		// Upload to R2 with explicit content type
 		await Promise.all([
-			platform.env.STORAGE.put(`${filepath}/${id}.${contentTypeSuffix}`, imageFile, {
+			platform.env.STORAGE.put(filename, imageFile, {
 				httpMetadata: {
 					contentType,
 					cacheControl: 'public, max-age=31536000'

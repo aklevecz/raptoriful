@@ -66,6 +66,7 @@ export function createRsvp() {
 	/** @param {string} eventName */
 	async function getAllRsvps(eventName) {
 		const r = await api.getAllRSVPs(eventName);
+		console.log(`all rsvp for ${eventName}`, r)
 		if (r.success) {
 			rsvp[eventName].rsvps = r.rsvps.filter(/** @param {*} r*/ (r) => r.event_name === eventName);
 		}

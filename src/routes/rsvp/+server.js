@@ -1,7 +1,6 @@
 import { verifyAndDecodeJwt } from '$lib/auth.server';
 import db from '$lib/db';
-import events from '$lib/stores/events';
-import { formatDate } from '$lib/utils';
+import PhoneCipher from '$lib/phone-cipher';
 import { json } from '@sveltejs/kit';
 
 // TODO: ADD STUFF HERE TO THE CONFIG TO MAKE LESS FLOWERS2 HARDCODED
@@ -13,16 +12,17 @@ export async function GET({ cookies, url, platform }) {
 
 	// all rsvps for this event name
 	if (eventName) {
+		const cipher = new PhoneCipher();
 		const { results: rsvps } = await db.getRsvpsAndRaptors(platform?.env.DATABASE, eventName);
-		return json({ success: true, rsvps });
+		return json({ success: true, rsvps: rsvps.map((/** @type {*} */r) => ({ ...r, phone_number: cipher.encrypt(r.phone_number)  })) });
 	}
 
+	// all rsvps for a given user
 	const token = cookies.get('token');
 	if (token) {
 		try {
 			const payload = await verifyAndDecodeJwt(token);
 
-			// all rsvps for a given user
 			const { results: rsvps } = await db.getRsvp(platform?.env.DATABASE, payload);
 			return json({ success: true, rsvps: rsvps });
 		} catch (e) {

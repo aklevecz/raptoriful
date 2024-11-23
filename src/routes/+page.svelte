@@ -57,7 +57,6 @@
 		}, 10);
 	}
 </script>
-
 <div class="container">
 	<div class="header-info">
 		<Header {event} />

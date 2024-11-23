@@ -12,8 +12,8 @@
 		align-items: center;
 		justify-content: center;
 		font-weight: bold;
-        /* margin-top: 1rem; */
-		/* margin-bottom: 0.75rem; */
+        margin-top: 0rem;
+		margin-bottom: 0.5rem;
 		border: 1px solid;
     }
 </style>

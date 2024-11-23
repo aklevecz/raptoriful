@@ -142,9 +142,10 @@
 		flex: 0 0 45%;
 		word-break: break-all;
 		box-sizing: border-box;
+    transition: filter 0.5s ease-in-out;
 	}
 	.favorite {
-		background-color: #82c6c991;
+		/* background-color: #82c6c991; */
 		filter: brightness(1.25);
 	}
 	img {

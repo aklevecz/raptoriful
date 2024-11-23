@@ -21,7 +21,7 @@ export default {
 	bao3: {
 		name: 'bao3',
 		noun: 'Dreams',
-		date: '2024-12-14T16:20:00-08:00',
+		date: '2025-01-13T16:20:00-08:00',
 		location: '2684 Lacy St., Los Angeles CA 90031',
 		videoGif: 'https://rsv.yaytso.art/bao/og.gif',
 		video: 'bao/bao_dj_compressed.mp4',

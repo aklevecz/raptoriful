@@ -1,7 +1,16 @@
+import PhoneCipher from '$lib/phone-cipher';
+
 /** @type {import('./$types').RequestHandler} */
 export async function GET({platform, url}) {
-    const id = url.searchParams.get('id')
-    
+    let id = url.searchParams.get('id')
+    // if id ends in raptor
+    if (id?.includes("~")) {
+        const cipher = new PhoneCipher();
+        console.log(id)
+        id = cipher.decrypt(id.replace("_thumb", ""));
+        id = id + '_thumb';
+    }
+    console.log(id)
     try {
         if (id?.includes("_thumb")) {
             const key = `${id.replace("_thumb", "")}:favorite:b3:base64`
