@@ -117,6 +117,8 @@
 		await modelStorage.delete('generatedImgs', imgObject.id);
 		generate.refreshAllGeneratedImgs();
 	}
+
+
 </script>
 
 <div class:favorite={isMain} class="generated-img-item">

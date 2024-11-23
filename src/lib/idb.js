@@ -206,11 +206,14 @@ class ModelStorage {
 			};
 		});
 	}
-	/** @param {{imgUrl: string, base64Url: string, seed: string, prompt: string}} entry */
-	async addGeneratedImg(entry) {
+	/** 
+	 * @param {{imgUrl: string, base64Url: string, seed: string, prompt: string}} entry 
+	 * @param {string} [id]
+	 * */
+	async addGeneratedImg(entry, id) {
 		await this.set(this.stores.generatedImgs, {
 			...entry,
-			id: `${entry.prompt.replace(/[^a-zA-Z0-9]/g, '_')}_${entry.seed}`
+			id: id || `${entry.prompt.replace(/[^a-zA-Z0-9]/g, '_')}_${entry.seed}`
 		});
 	}
 

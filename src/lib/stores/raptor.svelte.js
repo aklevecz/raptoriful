@@ -32,7 +32,6 @@ export function createRaptor() {
 					// favoriteSvelte.selectFavoriteBao(r.favorite);
 				}
 				if (r.favorites) {
-					console.log(r.favorites)
 					raptor.favoriteBaos = r.favorites;
 				}
 			}

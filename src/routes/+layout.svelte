@@ -1,19 +1,41 @@
 <script>
-	import { formatDate } from '$lib/utils';
+	import { fetchImageAsBase64, formatDate } from '$lib/utils';
 	import Nav from '$lib/components/nav.svelte';
 	import { onMount } from 'svelte';
 	import modelStorage from '$lib/idb';
 	import generate from '$lib/stores/generate.svelte';
-	import "../animations.css";
+	import '../animations.css';
 	import raptorSvelte from '$lib/stores/raptor.svelte';
+	import authSvelte from '$lib/stores/auth.svelte';
+	import storage from '$lib/storage';
 
 	/** @type {{data:import('./$types').LayoutData, children: any}} */
 	let { children, data } = $props();
 	const { event } = data;
 	onMount(() => {
-		raptorSvelte.init()
-		modelStorage.init().then(() => {
+		const promises = [];
+		promises.push(raptorSvelte.init());
+		promises.push(modelStorage.init());
+		Promise.all(promises).then(() => {
 			// modelSvelte.init();
+			modelStorage.getAllGeneratedImgs().then(async (imgs) => {
+				for (let fav of raptorSvelte.state.favoriteBaos) {
+					if (!imgs.find((/** @type {*} */ i) => i.id === fav)) {
+						const base64 = await fetchImageAsBase64(
+							`/img?id=${authSvelte.state.user.phoneNumber}/${fav}`
+						);
+						// storage.saveLastGenerated(base64);
+						await modelStorage.addGeneratedImg({
+							imgUrl: 'imgurl',
+							base64Url: base64,
+							seed: 'seed',
+							prompt: 'prompt'
+						}, fav);
+						await generate.refreshAllGeneratedImgs();
+					} else {
+					}
+				}
+			});
 			generate.init();
 		});
 	});

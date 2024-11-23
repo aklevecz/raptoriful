@@ -40,8 +40,9 @@ export async function GET({platform, url}) {
             return new Response('Storage not configured', { status: 500 });
         }
 
-        const object = await storage.get(`bao3/rsvp/${id}`);
-        
+        const key = `bao3/rsvp/${id}.jpeg`;
+        console.log(key)
+        const object = await storage.get(key);
         if (!object) {
             return new Response('Image not found', { status: 404 });
         }
