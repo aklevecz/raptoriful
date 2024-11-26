@@ -1,4 +1,5 @@
 <script>
+	import appSvelte from '$lib/stores/app.svelte';
 	import auth from '$lib/stores/auth.svelte';
 	import rsvp from '$lib/stores/rsvp.svelte';
 	import { generateScrollTo } from '$lib/utils';
@@ -38,6 +39,7 @@
 		if (success) {
 			auth.updateFlow('code verified');
 			await rsvp.createRSVP(eventName);
+			appSvelte.initUsersAndGenerations()
 			setTimeout(() => {
 				generateScrollTo();
 			}, 10);
@@ -86,6 +88,9 @@
 			</div>
 			<input
 				type="text"
+				inputmode="numeric"
+				autocomplete="one-time-code"
+				pattern="\d{6}"
 				onchange={/** @param {Event & { target: HTMLInputElement }} e */ (e) =>
 					(code = e.currentTarget.value)}
 				onkeydown={/** @param {KeyboardEvent} e */ (e) => {
@@ -94,6 +99,20 @@
 					}
 				}}
 				onkeyup={(e) => {
+					// @ts-ignore
+					if (e.target.value.length === 6) {
+						verifyCode();
+					}
+				}}
+				onpaste={(e) => {
+					setTimeout(() => {
+						// @ts-ignore
+						if (e.target.value.length === 6) {
+							verifyCode();
+						}
+					}, 0);
+				}}
+				oninput={(e) => {
 					// @ts-ignore
 					if (e.target.value.length === 6) {
 						verifyCode();
@@ -119,12 +138,13 @@
 
 <style>
 	.rsvp-container {
+		background-color: #0000004d;
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
 		max-width: 200px;
-		background-color: var(--accent-color);
-		padding: 1rem;
+		padding: 1.4rem;
+		border-radius: 20px;
 	}
 	.cta {
 		font-size: 1.25rem;

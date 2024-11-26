@@ -12,13 +12,21 @@
 	let { imgObject } = $props();
 
 	let showModal = $state(false);
+  let showImgPreviewModal = $state(false);
 
 	let imgEl = $state();
+  let imgPreviewEl = $state();
 
 	onMount(async () => {
 		let imgEntry = await modelStorage.getGeneratedImg(imgObject.id);
 		imgEl.src = imgEntry.base64Url;
 	});
+
+  $effect(() => {
+    if (showImgPreviewModal) {
+      imgPreviewEl.src = imgEl.src
+    }
+  })
 
 	let isMain = $derived(raptorSvelte.state.mainBao === imgObject.id);
 	let isFavorite = $derived(raptorSvelte.state.favoriteBaos.includes(imgObject.id));
@@ -109,7 +117,7 @@
 		}
 	}
 
-	async function onToggleDeleteModal() {
+	async function onToggleShowModal() {
 		showModal = !showModal;
 	}
 
@@ -122,11 +130,11 @@
 </script>
 
 <div class:favorite={isMain} class="generated-img-item">
-	<img bind:this={imgEl} alt="Generated" />
+	<img onclick={() => showImgPreviewModal = true} bind:this={imgEl} alt="Generated" />
 	<!-- <div>{imgObject.prompt}</div> -->
 	<button class="btn_icon" onclick={onFavorite}><HeartIcon active={isFavorite} /></button>
 	<button class="btn_icon" onclick={onMained}><StarIcon active={isMain} /></button>
-	<button class="btn_icon" onclick={onToggleDeleteModal}
+	<button class="btn_icon" onclick={onToggleShowModal}
 		><img style="width:24px;" src="/icons/trash-icon.svg" alt="Delete" /></button
 	>
 	<!-- <button class="btn" onclick={onUpload}>Upload</button> -->
@@ -134,9 +142,16 @@
 		<div style="margin:1rem 0;word-break:auto-phrase;">
 			Are you sure you want to delete this image?
 		</div>
-		<button class="btn" onclick={onToggleDeleteModal}>Cancel</button>
+		<button class="btn" onclick={onToggleShowModal}>Cancel</button>
 		<button class="btn neg" onclick={onDelete}>Delete</button>
 	</Modal>
+
+  <Modal title="Bao" bind:showModal={showImgPreviewModal}>
+    <div style="margin:1rem 0;word-break:auto-phrase;">
+      <img bind:this={imgPreviewEl} alt="Generated" />
+      <button class="btn" onclick={() => showImgPreviewModal = false}>Close</button>
+    </div>
+  </Modal>
 </div>
 
 <style>

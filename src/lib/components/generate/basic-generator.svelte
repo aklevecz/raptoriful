@@ -99,6 +99,8 @@
 		height: 100px;
 		max-width: 500px;
 		background: none;
+    color: white;
+    background: #00ffe229;
 		border: 1px solid white;
 	}
 

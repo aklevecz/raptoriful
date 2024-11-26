@@ -37,7 +37,7 @@
 <div class="container">
 	{#if auth.state.authorized}
 		<SectionHeading>Profile</SectionHeading>
-		<div style="display:flex;justify-content:center;">
+		<div style="display:flex;justify-content:start;">
 			<!-- <Raptor size={270} accent={raptor.state.color} /> -->
 			<img class="favorite-bao" bind:this={imgEl} alt="favorite bao" />
 		</div>
@@ -72,12 +72,16 @@
 		min-height: 90vh;
 		padding: 1rem;
 		padding-top: 0;
+		max-width: 768px;
 	}
 	.generated-img-container {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 1rem;
-		justify-content: center;
+		/* justify-content: center; */
+	}
+	:global(.generated-img-container > *) {
+		max-width: 200px;
 	}
 	.user-phone {
 		/* text-align: center; */
@@ -85,8 +89,11 @@
 		margin-bottom: 0.5rem;
 		font-weight: 400;
 	}
+	.event_item_container {
+		max-width: 400px;
+	}
 	.event-item {
-		border: 1px solid var(--primary-color);
+		border: 1px solid var(--secondary-color);
 		border-top: none;
 		display: flex;
 		align-items: center;
@@ -95,7 +102,7 @@
 	}
 
 	.event_item_container > .event-item:first-child {
-		border-top: 1px solid var(--primary-color);
+		border-top: 1px solid var(--secondary-color);
 	}
 
 	.event_item_name {
@@ -119,9 +126,10 @@
 	.favorite-bao {
 		width: 300px;
 		height: 300px;
+		margin:auto;
 		margin-bottom: 1rem;
-		padding: 10px;
-		background: var(--green);
+		/* padding: 10px; */
+		/* background: var(--green); */
 		border-radius: 40px;
 	}
 	h3 {

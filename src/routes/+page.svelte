@@ -196,11 +196,15 @@
 	.promo-video {
 		width: 100%;
 		max-width: 500px;
+		min-height: 300px;
 		margin: 0.5rem 0 1rem;
 		border-radius: 40%;
 	}
 	h3 {
 		margin: 0;
+	}
+	.rsvp-section {
+		margin:2rem 0;
 	}
 	.rsvp-raptor {
 		flex: 0 1 20px;
