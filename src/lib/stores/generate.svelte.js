@@ -59,8 +59,8 @@ const createGenerateStore = () => {
 						}
 					} else {
 					}
-					await refreshAllGeneratedImgs();
 				}
+        await refreshAllGeneratedImgs();
 			});
 		},
 		/**

@@ -30,7 +30,6 @@
 			return;
 		}
 		if (text.toLowerCase().includes('bao') === false) {
-			console.log('mising bao');
 			modalInfo = modals.missingBao;
 			showModal = true;
 			return;

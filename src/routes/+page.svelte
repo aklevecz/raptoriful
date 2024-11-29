@@ -98,7 +98,7 @@
 						</div>
 					{/if}
 					{#if event.name === 'bao3'}
-						<div>
+						<div style="display:flex;">
 							<img
 								onerror={function () {
 									this.src = '/smiler.svg';
