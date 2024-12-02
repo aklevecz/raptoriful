@@ -59,8 +59,11 @@
 	<div class="header-info">
 		<Header {event} />
 		<div class="header-info-desc">
-			<div style="margin-bottom:.5rem;">Bao would like you to help him dream</div>
-			<div>Free drinks, snacks, pizza, & of course The Bao himself 🐶</div>
+			<!-- <div style="margin-bottom:.5rem;">Bao would like you to help him dream</div> -->
+			<!-- <div>Free drinks, snacks, pizza, & of course The Bao himself 🐶</div> -->
+
+			<div style="margin-bottom:.5rem;">Bao 3 has been cancelled</div>
+			<div>But you are still encouraged to dream</div>
 		</div>
 		<div class="header-info-featuring"></div>
 		<video
@@ -76,11 +79,8 @@
 		<!-- <div style="display:flex;justify-content:center;"><Raptor size={200} /></div> -->
 		<div class="rsvp-section">
 			<h3>
-				{event.noun} RSVPed<span
-					style="color:var(--green); font-size:.75rem;margin-left:.5rem;display:{isRSVPed
-						? 'unset'
-						: 'none'}">(You are RSVPed!)</span
-				>
+				{event.noun} imagined
+				<!-- <span style="color:var(--green); font-size:.75rem;margin-left:.5rem;display:{isRSVPed ? 'unset' : 'none'}">(You are RSVPed!)</span > -->
 			</h3>
 
 			<div class="raptor-container">
@@ -118,11 +118,11 @@
 			</div>
 			{#if auth.state.authorized}
 				<div class="rsvp-button-container">
-					{#if isRSVPed}
+					<!-- {#if isRSVPed}
 						<button class="btn cancel" onclick={() => rsvp.unRSVP(event.name)}>
 							{#if rsvp.fetching}...{:else}unRSVP{/if}</button
 						>
-					{/if}
+					{/if} -->
 
 					{#if rsvp.state[event.name]?.status !== 'rsvped'}
 						<button class="btn lg fixed-bottom-button" onclick={onRSVP}

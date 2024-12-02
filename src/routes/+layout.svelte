@@ -9,7 +9,7 @@
 	let { children, data } = $props();
 	const { event } = data;
 	onMount(() => {
-		appSvelte.initUsersAndGenerations()
+		appSvelte.initUsersAndGenerations();
 	});
 </script>
 
@@ -92,7 +92,7 @@
 		--red: #ff4a4a;
 		--primary-color: #333333;
 		--secondary-color: #fff;
-		
+
 		--accent-color: #b7c0c5;
 		--purple: #965cff;
 		--green: #7bff7b;
@@ -108,8 +108,7 @@
 	:global(body) {
 		background-color: var(--accent-color);
 		color: var(--primary-color);
-		background-color: var(--ocean-accent-primary);
-  color: var(--night-fg-primary);
+		color: var(--night-fg-primary);
 		font-family: 'Noto Sans', sans-serif;
 		font-weight: 400;
 		font-style: normal;

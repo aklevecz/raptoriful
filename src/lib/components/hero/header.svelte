@@ -6,11 +6,14 @@
 </script>
 
 <div class="header_wrapper">
+	<!-- <h1 style="text-transform:capitalize;">{event.name}</h1> -->
+	<!-- <h3 style="text-align:center;">{event.location}</h3> -->
 	<h1 style="text-transform:capitalize;">{event.name}</h1>
-	<h3 style="text-align:center;">{event.location}</h3>
+	<h3 style="text-align:center;color:var(--red);">CANCELLED</h3>
 </div>
-<div class="date_wrapper"><h3>{formatDate(new Date(event.date))}</h3></div>
+<!-- <div class="date_wrapper"><h3>{formatDate(new Date(event.date))}</h3></div> -->
 
+<div class="date_wrapper"><h3>CANCELLED</h3></div>
 <style>
 	.header_wrapper {
 		display: flex;
