@@ -126,7 +126,7 @@
 
 					{#if rsvp.state[event.name]?.status !== 'rsvped'}
 						<button class="btn lg fixed-bottom-button" onclick={onRSVP}
-							>{#if rsvp.fetching}...{:else}Sign in to dream{/if}</button
+							>{#if rsvp.fetching}...{:else}Show off your dream{/if}</button
 						>
 					{/if}
 

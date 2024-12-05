@@ -53,7 +53,7 @@
 {#if !auth.state.authorized}
 	<div class="rsvp-container">
 		{#if auth.state.flow === null}
-			<button class="btn lg" onclick={onRSVP}>RSVP</button>
+			<button class="btn lg" onclick={onRSVP}>Sign in to dream</button>
 		{/if}
 		{#if auth.state.flow === 'authenticating'}
 			<div class="cta">

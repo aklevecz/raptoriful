@@ -54,9 +54,14 @@ async function sendMessages(dataPath, testMode = false) {
 		const { sendSms } = twilio();
 
 		const flowerPeople = JSON.parse(await fs.readFile(dataPath, 'utf-8'));
+		const bao3RSVPs = JSON.parse(await fs.readFile('./bao-3-rsvps.json', 'utf-8'));
+		console.log(bao3RSVPs)
+		return
 
 		for (const person of flowerPeople) {
-			const { phone_number, follow_up } = person;
+			let { phone_number, follow_up } = person;
+			// OVERRIDE MESSAGE FOR CANCELLATION
+			follow_up = `Unfortunately Bao 3 has been cancelled, but you are still encouraged to whip up some dreams on the page. Maybe my dad will send you a copy for you to vherish for the rest of your dreamy life.`;
 			if (!follow_up) continue;
 
 			// const friend = phoneToFriend[phone_number];

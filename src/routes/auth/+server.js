@@ -8,6 +8,9 @@ export async function GET() {
 }
 const myNumber = '1234'
 const testPhoneNumber = myNumber;
+const testNumberStartsWith = "bao123"
+
+const isTestPhoneNumber = (/** @type {string} */ phoneNumber) => phoneNumber === testPhoneNumber || phoneNumber.startsWith(testNumberStartsWith);
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request, cookies, platform }) {
 	const { phoneNumber, code } = await request.json();
@@ -20,8 +23,8 @@ export async function POST({ request, cookies, platform }) {
 			return json({ phoneNumber, message: responses.CODE_SENT });
         }
         // IF TEST PHONE NUMBER
-		if (phoneNumber === testPhoneNumber) {
-            return success(testPhoneNumber);
+		if (isTestPhoneNumber(phoneNumber)) {
+            return success(phoneNumber);
 		}
 		const r = await platform?.env.AUTH_SERVICE.sendCode(phoneNumber);
 		if (r.status === 'pending') {
@@ -48,7 +51,7 @@ export async function POST({ request, cookies, platform }) {
 				return json({ message: responses.AUTHED });
 			}
             // IF TEST PHONE NUMBER
-			if (storedPhoneNumber === testPhoneNumber) {
+			if (isTestPhoneNumber(storedPhoneNumber)) {
 				return approved();
 			}
 			const r = await platform?.env.AUTH_SERVICE.verifyCode({
