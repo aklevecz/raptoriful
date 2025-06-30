@@ -9,23 +9,19 @@
 	<!-- <h1 style="text-transform:capitalize;">{event.name}</h1> -->
 	<!-- <h3 style="text-align:center;">{event.location}</h3> -->
 	<h1 style="text-transform:capitalize;">{event.name}</h1>
-	<h3 style="text-align:center;color:var(--red);">CANCELLED</h3>
 </div>
-<!-- <div class="date_wrapper"><h3>{formatDate(new Date(event.date))}</h3></div> -->
+<div class="date_wrapper"><h3>{formatDate(new Date(event.date))}</h3></div>
 
-<div class="date_wrapper"><h3>CANCELLED</h3></div>
 <style>
 	.header_wrapper {
 		display: flex;
 		gap: 1rem;
-		border: 1px solid var(--secondary-color);
         color: var(--secondary-color);
 		padding: 0.25rem 0.3rem;
-        padding: .5rem;
+        /* padding: .5rem; */
         padding-left: .75rem
 	}
     .date_wrapper {
-        border: 1px solid var(--secondary-color);
         color: var(--secondary-color);
         border-top:0;
         padding: .5rem;

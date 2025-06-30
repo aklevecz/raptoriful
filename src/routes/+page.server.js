@@ -18,6 +18,6 @@ export async function load({ cookies, platform }) {
 			// r[Symbol.dispose]();
 		}
 	}
-	const eventName = 'bao3'
+	const eventName = 'byebyelacy'
 	return { authorized, user, event: events[eventName] };
 }

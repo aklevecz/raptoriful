@@ -30,6 +30,10 @@ const initialState = {
 	bao3: {
 		status: null,
 		rsvps: []
+	},
+	byebyelacy: {
+		status: null,
+		rsvps: []
 	}
 };
 

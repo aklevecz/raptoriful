@@ -1,4 +1,5 @@
 <script>
+	import { read } from '$app/server';
 	import AuthFlow from '$lib/components/auth-flow.svelte';
 	import GeneratorSection from '$lib/components/containers/generator-section.svelte';
 	import Header from '$lib/components/hero/header.svelte';
@@ -12,7 +13,6 @@
 	/** @type {{data:import('./$types').PageData}} */
 	const { data } = $props();
 	const { event } = data;
-
 	onMount(() => {
 		auth.init({ authorized: data.authorized, user: data.user });
 		rsvp.init(event.name);
@@ -55,15 +55,15 @@
 		}, 10);
 	}
 </script>
+
 <div class="container">
 	<div class="header-info">
 		<Header {event} />
 		<div class="header-info-desc">
-			<!-- <div style="margin-bottom:.5rem;">Bao would like you to help him dream</div> -->
-			<!-- <div>Free drinks, snacks, pizza, & of course The Bao himself 🐶</div> -->
+			<div style="margin-bottom:.5rem;">One last shindig in the Lacy Studio</div>
+			<div>Free drinks, snacks, pizza, & weird stuff to look at</div>
 
-			<div style="margin-bottom:.5rem;">Bao 3 has been cancelled</div>
-			<div>But you are still encouraged to dream</div>
+			<!-- <div>But you are still encouraged to dream</div> -->
 		</div>
 		<div class="header-info-featuring"></div>
 		<video
@@ -79,40 +79,42 @@
 		<!-- <div style="display:flex;justify-content:center;"><Raptor size={200} /></div> -->
 		<div class="rsvp-section">
 			<h3>
-				{event.noun} imagined
+				{event.noun} collected
 				<!-- <span style="color:var(--green); font-size:.75rem;margin-left:.5rem;display:{isRSVPed ? 'unset' : 'none'}">(You are RSVPed!)</span > -->
 			</h3>
 
 			<div class="raptor-container">
-				{#each rsvpList as raptor}
-					{#if event.name === 'zeitgeist'}
-						<div class="rsvp-raptor">
-							<div>
-								<Raptor size={50} accent={`#${raptor.color}`} />
+				{#if rsvpList}
+					{#each rsvpList as raptor}
+						{#if event.name === 'zeitgeist'}
+							<div class="rsvp-raptor">
+								<div>
+									<Raptor size={50} accent={`#${raptor.color}`} />
+								</div>
 							</div>
-						</div>
-					{/if}
-					{#if event.name === 'flowers'}
-						<div>
-							<img alt="event icon" class="rsvp-icon" src={event.icon} />
-						</div>
-					{/if}
-					{#if event.name === 'bao3'}
-						<div style="display:flex;">
-							<img
-								onerror={function () {
-									this.src = '/smiler.svg';
-									// @ts-ignore
-									this.style.width = '50px';
-								}}
-								src={`img?id=${raptor.phone_number}_thumb`}
-								style="border-radius:50%;"
-								alt="Generated"
-							/>
-						</div>
-					{/if}
-				{/each}
-				{#if rsvp.state[event.name]?.rsvps.length === 0}
+						{/if}
+						{#if event.name === 'flowers'}
+							<div>
+								<img alt="event icon" class="rsvp-icon" src={event.icon} />
+							</div>
+						{/if}
+						{#if event.name === 'bao3'}
+							<div style="display:flex;">
+								<img
+									onerror={function () {
+										this.src = '/smiler.svg';
+										// @ts-ignore
+										this.style.width = '50px';
+									}}
+									src={`img?id=${raptor.phone_number}_thumb`}
+									style="border-radius:50%;"
+									alt="Generated"
+								/>
+							</div>
+						{/if}
+					{/each}
+				{/if}
+				{#if !rsvp.state[event.name] || rsvp.state[event.name]?.rsvps.length === 0}
 					<div>no one has RSVPed... yet!</div>
 				{/if}
 			</div>
@@ -204,7 +206,7 @@
 		margin: 0;
 	}
 	.rsvp-section {
-		margin:2rem 0;
+		margin: 2rem 0;
 	}
 	.rsvp-raptor {
 		flex: 0 1 20px;

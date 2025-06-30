@@ -93,7 +93,7 @@
 		--primary-color: #333333;
 		--secondary-color: #fff;
 
-		--accent-color: #b7c0c5;
+		--accent-color: var(--red);
 		--purple: #965cff;
 		--green: #7bff7b;
 		--yellow: #f7ed37;
@@ -112,6 +112,8 @@
 		font-family: 'Noto Sans', sans-serif;
 		font-weight: 400;
 		font-style: normal;
+		padding: 0;
+		margin: 0;
 	}
 	:global(input) {
 		background-color: var(--secondary-color);
@@ -133,7 +135,7 @@
 		/* width: 130px; */
 	}
 	:global(button.btn.lg) {
-		font-size: 24px;
+		font-size: 18px;
 		padding: 16px 32px;
 		/* width: 220px; */
 	}

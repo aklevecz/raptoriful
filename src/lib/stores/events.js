@@ -26,5 +26,14 @@ export default {
 		videoGif: 'https://rsv.yaytso.art/bao/og.gif',
 		video: 'bao/bao_dj_compressed.mp4',
 		icon: '/flower-icon.png'
+	},
+	byebyelacy: {
+		name: 'byebyelacy',
+		noun: 'lacy',
+		date: '2025-06-07T16:20:00-07:00',
+		location: '2684 Lacy St., Los Angeles CA 90031',
+		videoGif: 'https://rsv.yaytso.art/bao/og.gif',
+		video: 'bao/bao_dj_compressed.mp4',
+		icon: '/flower-icon.png'
 	}
 };

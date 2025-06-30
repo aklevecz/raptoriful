@@ -53,7 +53,7 @@
 {#if !auth.state.authorized}
 	<div class="rsvp-container">
 		{#if auth.state.flow === null}
-			<button class="btn lg" onclick={onRSVP}>Sign in to dream</button>
+			<button class="btn lg" onclick={onRSVP}>RSVP and/or sign in</button>
 		{/if}
 		{#if auth.state.flow === 'authenticating'}
 			<div class="cta">
@@ -138,13 +138,13 @@
 
 <style>
 	.rsvp-container {
-		background-color: #0000004d;
+		/* background-color: #0000004d; */
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
-		max-width: 200px;
-		padding: 1.4rem;
-		border-radius: 20px;
+		max-width: 300px;
+		/* padding: 1.4rem; */
+		/* border-radius: 20px; */
 	}
 	.cta {
 		font-size: 1.25rem;
